@@ -6,6 +6,7 @@ const int buttonPin = 23;
 int buttonState; 
 int lastButtonState = LOW;  
 int count = 0;
+bool trilMotorToggle = true;
 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
@@ -46,7 +47,7 @@ void loop()
     }
   }
   lastButtonState = reading;
-  if ((millis()- trilTimer) >  trilTime)
+  if ((millis()- trilTimer) >  trilTime && trilMotorToggle == true)
   {
     trilmotorOn();  
   }

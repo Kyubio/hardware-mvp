@@ -15,12 +15,14 @@ int buttonState;
 int lastButtonState = LOW;  
 int count = 0;
 
+//debounce
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 
 //callback functie wordt aangeroepen vanuit de library en zorgt ervoor dat er berichten worden uitgelezen op de HiveMQ
-void callback(char* topic, byte* payload, unsigned int length) {
+void callback(char* topic, byte* payload, unsigned int length) 
+{
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
@@ -33,14 +35,17 @@ void callback(char* topic, byte* payload, unsigned int length) {
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 
-void reconnect() {
+void reconnect() 
+{
   
   // Loop until we're reconnected
-  while (!mqttClient.connected()) {
+  while (!mqttClient.connected()) 
+  {
     Serial.print("Attempting MQTT connection...");
     
     // Attempt to connect
-    if (mqttClient.connect("arduinoClient")) {
+    if (mqttClient.connect("arduinoClient")) 
+    {
       Serial.println("connected");
       
       // Wanneer er verbinding gemaakt is verzend dit bericht naar de broker (published berichten)
@@ -70,7 +75,8 @@ void setup()
   
   WiFi.begin(ssid, password);
   
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) 
+    {
         delay(500);
         Serial.print(".");
     }
@@ -78,7 +84,8 @@ void setup()
 
 void loop()
 {
-  if (!mqttClient.connected()) {
+  if (!mqttClient.connected()) 
+  {
     reconnect();
   }
   mqttClient.loop();

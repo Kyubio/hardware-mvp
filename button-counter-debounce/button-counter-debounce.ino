@@ -1,7 +1,5 @@
 
 const int buttonPin = 23; 
-
-
 int buttonState; 
 int lastButtonState = LOW;  
 int count = 0;

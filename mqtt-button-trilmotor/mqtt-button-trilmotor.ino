@@ -57,10 +57,10 @@ void reconnect()
       Serial.println("connected");
       
       // Wanneer er verbinding gemaakt is verzend dit bericht naar de broker (published berichten)
-      mqttClient.publish("testTopic123","hello world");
+      mqttClient.publish("buttonClick","verbinding gemaakt");
       
       //Subribed op een topic (krijgt berichten binnen vanuit broker)
-      mqttClient.subscribe("TestReceive");
+      mqttClient.subscribe("trilMotor");
 
       //Als hij niet verbonden is doet hij een delay
     } else {

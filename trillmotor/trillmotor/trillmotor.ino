@@ -6,7 +6,7 @@ const int buttonPin = 23;
 int buttonState; 
 int lastButtonState = LOW;  
 int count = 0;
-bool trilMotorToggle = true;
+bool trilMotorToggle = false;//als de boolean op true wordt gezet begint als het ware de focus sessie. (Dit moet vanuit de app geregeld worden)
 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
